@@ -12,4 +12,18 @@ class Patient {
     var firstName: String?
     var surname: String?
     var diagnosys: String?
+    
+    init() {
+    }
+    
+    init(firstName: String, surname: String, diagnosys: String) {
+        self.firstName = firstName
+        self.surname = surname
+        self.diagnosys = diagnosys
+    }
+    
+    init(firstName: String, surname: String) {
+        self.firstName = firstName
+        self.surname = surname
+    }
 }

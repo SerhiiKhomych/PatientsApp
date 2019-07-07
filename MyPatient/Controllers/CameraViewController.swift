@@ -96,6 +96,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
             
                 photoVC.takenPhoto = image
+                photoVC.patient = patient
                 
                 DispatchQueue.main.async {
                     self.present(photoVC, animated: true, completion: {
@@ -166,15 +167,4 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBAction func takePhoto(_ sender: Any) {
         takePhoto = true
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
