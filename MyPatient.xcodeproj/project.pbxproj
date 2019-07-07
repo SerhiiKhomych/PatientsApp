@@ -16,6 +16,8 @@
 		9FC4112322CB754500773321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC4112122CB754500773321 /* Main.storyboard */; };
 		9FC4112522CB754600773321 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FC4112422CB754600773321 /* Assets.xcassets */; };
 		9FC4112822CB754600773321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC4112622CB754600773321 /* LaunchScreen.storyboard */; };
+		9FC7784B22D0B88300ECDA5E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7784A22D0B88300ECDA5E /* MainTabBarController.swift */; };
+		9FC7784E22D0BCB100ECDA5E /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7784D22D0BCB100ECDA5E /* Patient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		9FC4112422CB754600773321 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FC4112722CB754600773321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FC4112922CB754600773321 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FC7784A22D0B88300ECDA5E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		9FC7784D22D0BCB100ECDA5E /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 				9F332B0122CE17AD00902740 /* DailyPatientsViewController.swift */,
 				9F332B0322CE17C200902740 /* CameraViewController.swift */,
 				9FAF8CFD22CF8C93006A13DF /* PhotoViewController.swift */,
+				9FC7784A22D0B88300ECDA5E /* MainTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -73,6 +78,7 @@
 		9FC4111C22CB754500773321 /* MyPatient */ = {
 			isa = PBXGroup;
 			children = (
+				9FC7784C22D0BC0E00ECDA5E /* Models */,
 				9F332AFE22CE175200902740 /* Controllers */,
 				9FC4111D22CB754500773321 /* AppDelegate.swift */,
 				9FC4111F22CB754500773321 /* ViewController.swift */,
@@ -82,6 +88,14 @@
 				9FC4112922CB754600773321 /* Info.plist */,
 			);
 			path = MyPatient;
+			sourceTree = "<group>";
+		};
+		9FC7784C22D0BC0E00ECDA5E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9FC7784D22D0BCB100ECDA5E /* Patient.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +172,9 @@
 				9FC4112022CB754500773321 /* ViewController.swift in Sources */,
 				9F332B0422CE17C200902740 /* CameraViewController.swift in Sources */,
 				9FC4111E22CB754500773321 /* AppDelegate.swift in Sources */,
+				9FC7784B22D0B88300ECDA5E /* MainTabBarController.swift in Sources */,
 				9F332B0222CE17AD00902740 /* DailyPatientsViewController.swift in Sources */,
+				9FC7784E22D0BCB100ECDA5E /* Patient.swift in Sources */,
 				9F332B0022CE178F00902740 /* PatientViewController.swift in Sources */,
 				9FAF8CFE22CF8C93006A13DF /* PhotoViewController.swift in Sources */,
 			);

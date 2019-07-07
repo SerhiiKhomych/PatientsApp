@@ -10,13 +10,34 @@ import UIKit
 
 class PatientViewController: UIViewController {
 
+    @IBOutlet weak var patientName: UITextField!
+    @IBOutlet weak var patientSurname: UITextField!
+    @IBOutlet weak var diagnosys: UITextField!
+    
+    var barController: MainTabBarController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        barController = self.tabBarController as? MainTabBarController
+    }
 
-        // Do any additional setup after loading the view.
+    @IBAction func patientNameListener(_ sender: UITextField) {
+        if let controller = barController {
+            controller.patient.firstName = sender.text
+        }
     }
     
-
+    @IBAction func patientSurnameListener(_ sender: UITextField) {
+        if let controller = barController {
+            controller.patient.surname = sender.text
+        }
+    }
+    
+    @IBAction func diagnosysListener(_ sender: UITextField) {
+        if let controller = barController {
+            controller.patient.diagnosys = sender.text
+        }
+    }
     /*
     // MARK: - Navigation
 

@@ -1,0 +1,15 @@
+//
+//  Patient.swift
+//  MyPatient
+//
+//  Created by Serhii Khomych on 06.07.19.
+//  Copyright © 2019 Test. All rights reserved.
+//
+
+import UIKit
+
+class Patient {
+    var firstName: String?
+    var surname: String?
+    var diagnosys: String?
+}

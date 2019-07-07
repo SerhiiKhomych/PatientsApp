@@ -13,18 +13,18 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     @IBOutlet weak var previewView: UIView!
     
+    var barController: MainTabBarController?
+    
     let captureSession: AVCaptureSession = AVCaptureSession()
     var captureDevice: AVCaptureDevice!
     
     var takePhoto = false
     
+    var patient: Patient!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        stopCaptureSession()
+        barController = self.tabBarController as? MainTabBarController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +72,19 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             let queue = DispatchQueue(label: "photoQueue")
             dataOutput.setSampleBufferDelegate(self, queue: queue)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let controller = barController {
+            patient = controller.patient
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopCaptureSession()
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
