@@ -12,7 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class PatientPhotosViewController: UICollectionViewController {
 
-    var item: String?
+    var images:[UIImage] = [UIImage]()
+    var directoryName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,34 +27,39 @@ class PatientPhotosViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.title = directoryName
+        
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fullURL = documentsDirectory.appendingPathComponent(directoryName)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        guard let fileEnumerator = FileManager.default.enumerator(at: fullURL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions()) else { return }
+        images.removeAll()
+        while let file = fileEnumerator.nextObject() {
+            images.append(UIImage(contentsOfFile: (file as! URL).path)!)
+        }
     }
-    */
-
-    // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return images.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        
+        let imageView: UIImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: cell.frame.width, height: cell.frame.height));
+        imageView.image = images[indexPath.row]
+        cell.contentView.addSubview(imageView)
+
         return cell
     }
 

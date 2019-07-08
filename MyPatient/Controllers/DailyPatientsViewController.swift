@@ -18,11 +18,12 @@ class DailyPatientsViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
             items = try FileManager.default.contentsOfDirectory(atPath: documentsDirectory.path)
+            tableView.reloadData()
         } catch let error as NSError {
             NSLog("Unable to get a content of a directory \(error.debugDescription)")
         }
@@ -44,15 +45,7 @@ class DailyPatientsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
-        
-        let patientsPhotoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PatientPhotosVC") as! PatientPhotosViewController
-        
-        patientsPhotoVC.item = item
-        
-        DispatchQueue.main.async {
-            self.present(patientsPhotoVC, animated: true, completion: nil)
-        }
+        performSegue(withIdentifier: "patientPhotosSeague", sender: indexPath)
     }
 
     /*
@@ -89,4 +82,13 @@ class DailyPatientsViewController: UITableViewController {
         return true
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "patientPhotosSeague" {
+            let indexPath = sender as! IndexPath
+            let patientPhotosVC = segue.destination as! PatientPhotosViewController
+            patientPhotosVC.directoryName = items[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
 }
