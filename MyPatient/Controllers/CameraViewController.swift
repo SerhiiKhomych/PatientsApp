@@ -11,6 +11,7 @@ import AVFoundation
 
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var previewView: UIView!
     
     var barController: MainTabBarController?
@@ -29,6 +30,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // reset slider
+        slider.value = 1
         
         // initialise session preset. It enables quality of camera
         // todo: change preset
@@ -82,7 +86,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopCaptureSession()
     }

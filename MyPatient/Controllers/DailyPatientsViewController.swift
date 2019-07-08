@@ -8,45 +8,51 @@
 
 import UIKit
 
-class DailtPatientsTableViewController: UITableViewController {
+class DailyPatientsViewController: UITableViewController {
 
-    var patients:[Patient] = [Patient]()
+    var items:[String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        patients.removeAll()
-        patients.append(Patient(firstName: "Mylola", surname: "Veresen", diagnosys: "nothing"))
-        patients.append(Patient(firstName: "Petro", surname: "Petrenko", diagnosys: "something"))
-        patients.append(Patient(firstName: "Max", surname: "Johns", diagnosys: "simple"))
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        do {
+            items = try FileManager.default.contentsOfDirectory(atPath: documentsDirectory.path)
+        } catch let error as NSError {
+            NSLog("Unable to get a content of a directory \(error.debugDescription)")
+        }
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patients.count
+        return items.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
 
-        let patient = patients[indexPath.row]
-        cell.textLabel?.text = (patient.firstName ?? "No name") + " " + (patient.surname ?? "No surname")
+        cell.textLabel?.text = items[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        
+        let patientsPhotoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PatientPhotosVC") as! PatientPhotosViewController
+        
+        patientsPhotoVC.item = item
+        
+        DispatchQueue.main.async {
+            self.present(patientsPhotoVC, animated: true, completion: nil)
+        }
     }
 
     /*
@@ -83,15 +89,4 @@ class DailtPatientsTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -17,7 +17,8 @@
 		9FC4112822CB754600773321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC4112622CB754600773321 /* LaunchScreen.storyboard */; };
 		9FC7784B22D0B88300ECDA5E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7784A22D0B88300ECDA5E /* MainTabBarController.swift */; };
 		9FC7784E22D0BCB100ECDA5E /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7784D22D0BCB100ECDA5E /* Patient.swift */; };
-		9FC7785222D1FA5A00ECDA5E /* DailtPatientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7785122D1FA5A00ECDA5E /* DailtPatientsTableViewController.swift */; };
+		9FC7785222D1FA5A00ECDA5E /* DailyPatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7785122D1FA5A00ECDA5E /* DailyPatientsViewController.swift */; };
+		9FC7785822D32D2D00ECDA5E /* PatientPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7785722D32D2D00ECDA5E /* PatientPhotosViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		9FC4112922CB754600773321 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FC7784A22D0B88300ECDA5E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9FC7784D22D0BCB100ECDA5E /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
-		9FC7785122D1FA5A00ECDA5E /* DailtPatientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailtPatientsTableViewController.swift; sourceTree = "<group>"; };
+		9FC7785122D1FA5A00ECDA5E /* DailyPatientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPatientsViewController.swift; sourceTree = "<group>"; };
+		9FC7785722D32D2D00ECDA5E /* PatientPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientPhotosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,8 @@
 				9F332B0322CE17C200902740 /* CameraViewController.swift */,
 				9FAF8CFD22CF8C93006A13DF /* PhotoViewController.swift */,
 				9FC7784A22D0B88300ECDA5E /* MainTabBarController.swift */,
-				9FC7785122D1FA5A00ECDA5E /* DailtPatientsTableViewController.swift */,
+				9FC7785122D1FA5A00ECDA5E /* DailyPatientsViewController.swift */,
+				9FC7785722D32D2D00ECDA5E /* PatientPhotosViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,8 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FC4112022CB754500773321 /* ViewController.swift in Sources */,
-				9FC7785222D1FA5A00ECDA5E /* DailtPatientsTableViewController.swift in Sources */,
+				9FC7785222D1FA5A00ECDA5E /* DailyPatientsViewController.swift in Sources */,
 				9F332B0422CE17C200902740 /* CameraViewController.swift in Sources */,
+				9FC7785822D32D2D00ECDA5E /* PatientPhotosViewController.swift in Sources */,
 				9FC4111E22CB754500773321 /* AppDelegate.swift in Sources */,
 				9FC7784B22D0B88300ECDA5E /* MainTabBarController.swift in Sources */,
 				9FC7784E22D0BCB100ECDA5E /* Patient.swift in Sources */,

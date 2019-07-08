@@ -29,7 +29,7 @@ class PhotoViewController: UIViewController {
     
     @IBAction func save(_ sender: Any) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let directoryName = (patient?.firstName ?? "No name") + (patient?.surname ?? "No surname")
+        let directoryName = (patient?.firstName ?? "No_name") + " " + (patient?.surname ?? "No_surname")
         let fullURL = documentsDirectory.appendingPathComponent(directoryName)
         
         var isDir : ObjCBool = true
@@ -48,6 +48,7 @@ class PhotoViewController: UIViewController {
                 NSLog("Unable to save file \(error.debugDescription)")
             }
         }
+        self.dismiss(animated: true, completion: nil)
     }
     
     func getTodayString() -> String{
