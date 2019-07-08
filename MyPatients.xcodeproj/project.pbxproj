@@ -25,7 +25,7 @@
 		9F332AFF22CE178F00902740 /* PatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewController.swift; sourceTree = "<group>"; };
 		9F332B0322CE17C200902740 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9FAF8CFD22CF8C93006A13DF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
-		9FC4111A22CB754500773321 /* MyPatient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPatient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FC4111A22CB754500773321 /* MyPatients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPatients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC4111D22CB754500773321 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FC4111F22CB754500773321 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9FC4112222CB754500773321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		9FC4111B22CB754500773321 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9FC4111A22CB754500773321 /* MyPatient.app */,
+				9FC4111A22CB754500773321 /* MyPatients.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9FC4111922CB754500773321 /* MyPatient */ = {
+		9FC4111922CB754500773321 /* MyPatients */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9FC4112C22CB754600773321 /* Build configuration list for PBXNativeTarget "MyPatient" */;
+			buildConfigurationList = 9FC4112C22CB754600773321 /* Build configuration list for PBXNativeTarget "MyPatients" */;
 			buildPhases = (
 				9FC4111622CB754500773321 /* Sources */,
 				9FC4111722CB754500773321 /* Frameworks */,
@@ -116,9 +116,9 @@
 			);
 			dependencies = (
 			);
-			name = MyPatient;
+			name = MyPatients;
 			productName = MyPatient;
-			productReference = 9FC4111A22CB754500773321 /* MyPatient.app */;
+			productReference = 9FC4111A22CB754500773321 /* MyPatients.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -136,7 +136,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9FC4111522CB754500773321 /* Build configuration list for PBXProject "MyPatient" */;
+			buildConfigurationList = 9FC4111522CB754500773321 /* Build configuration list for PBXProject "MyPatients" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -149,7 +149,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9FC4111922CB754500773321 /* MyPatient */,
+				9FC4111922CB754500773321 /* MyPatients */,
 			);
 		};
 /* End PBXProject section */
@@ -363,7 +363,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9FC4111522CB754500773321 /* Build configuration list for PBXProject "MyPatient" */ = {
+		9FC4111522CB754500773321 /* Build configuration list for PBXProject "MyPatients" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9FC4112A22CB754600773321 /* Debug */,
@@ -372,7 +372,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9FC4112C22CB754600773321 /* Build configuration list for PBXNativeTarget "MyPatient" */ = {
+		9FC4112C22CB754600773321 /* Build configuration list for PBXNativeTarget "MyPatients" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9FC4112D22CB754600773321 /* Debug */,

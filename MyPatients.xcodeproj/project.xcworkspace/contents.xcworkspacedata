@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MyPatient.xcodeproj">
+      location = "self:/Users/sek-ext/Desktop/PatientsApp/MyPatients.xcodeproj">
    </FileRef>
 </Workspace>

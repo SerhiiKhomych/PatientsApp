@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="253.62318840579712" y="-340.76086956521743"/>
         </scene>
-        <!--Patient-->
+        <!--Patients Data-->
         <scene sceneID="ZYk-av-Q89">
             <objects>
                 <viewController id="q9H-EZ-Q7V" customClass="PatientViewController" customModule="MyPatient" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,92 +73,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vti-ff-scf">
-                                <rect key="frame" x="0.0" y="20" width="414" height="667"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="YBZ-CZ-GuY">
+                                <rect key="frame" x="41.333333333333343" y="280.66666666666669" width="331.33333333333326" height="61.333333333333314"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="q6n-Wn-aEd">
-                                        <rect key="frame" x="20.666666666666657" y="70" width="372.66666666666674" height="253"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PATIENT NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKE-oz-CjJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="372.66666666666669" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMF-HH-QhN">
-                                                <rect key="frame" x="0.0" y="32.333333333333329" width="372.66666666666669" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="patientNameEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="vIV-PS-UOh"/>
-                                                    <action selector="patientNameListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="gSq-um-Kz1"/>
-                                                </connections>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PATIENT SURNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPs-xD-Lgl">
-                                                <rect key="frame" x="0.0" y="74.333333333333343" width="372.66666666666669" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6U4-uY-JfA">
-                                                <rect key="frame" x="0.0" y="106.66666666666666" width="372.66666666666669" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="patientSurnameEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="a1f-Rf-NaG"/>
-                                                    <action selector="patientSurnameListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="u0n-F7-5hx"/>
-                                                </connections>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIAGNOSYS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxm-oh-3KR">
-                                                <rect key="frame" x="0.0" y="148.66666666666666" width="372.66666666666669" height="20.333333333333343"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="169-7U-N5h">
-                                                <rect key="frame" x="0.0" y="181" width="372.66666666666669" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="diagnosysEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="2lx-I5-EVG"/>
-                                                    <action selector="diagnosysListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="Uwo-Pv-0ng"/>
-                                                </connections>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kI-VK-nAS">
-                                                <rect key="frame" x="0.0" y="223" width="372.66666666666669" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="m5M-pM-owC"/>
-                                                </constraints>
-                                                <state key="normal" title="Next Patient"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIAGNOSYS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkl-CK-VrX">
+                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IqJ-NE-s7u">
+                                        <rect key="frame" x="0.0" y="31.333333333333314" width="331.33333333333331" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="diagnosysEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="4T4-lu-TPV"/>
+                                            <action selector="diagnosysListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="dZ0-xT-Qad"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="q6n-Wn-aEd" firstAttribute="width" secondItem="Vti-ff-scf" secondAttribute="width" multiplier="0.9" id="2ae-EA-FHo"/>
-                                    <constraint firstAttribute="bottom" secondItem="q6n-Wn-aEd" secondAttribute="bottom" id="HUd-rw-FJ0"/>
-                                    <constraint firstItem="q6n-Wn-aEd" firstAttribute="top" secondItem="Vti-ff-scf" secondAttribute="top" constant="70" id="aBt-Kc-ZdH"/>
-                                    <constraint firstItem="q6n-Wn-aEd" firstAttribute="centerX" secondItem="Vti-ff-scf" secondAttribute="centerX" id="rad-FZ-uMe"/>
-                                </constraints>
-                            </scrollView>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Z5U-Rq-pMx">
+                                <rect key="frame" x="41.333333333333343" y="103.99999999999999" width="331.33333333333326" height="136.66666666666663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PATIENT NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH5-VL-ChE">
+                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4aU-oq-3dk">
+                                        <rect key="frame" x="0.0" y="32.333333333333343" width="331.33333333333331" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="patientNameEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="jOC-fn-C5B"/>
+                                            <action selector="patientNameListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="mLc-PB-mZS"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PATIENT SURNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-rf-H6o">
+                                        <rect key="frame" x="0.0" y="74.333333333333343" width="331.33333333333331" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P7p-Bd-mYp">
+                                        <rect key="frame" x="0.0" y="106.66666666666666" width="331.33333333333331" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="patientSurnameEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="cKX-bU-IfR"/>
+                                            <action selector="patientSurnameListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="4gj-ij-YuO"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Vti-ff-scf" firstAttribute="trailing" secondItem="1gI-ag-641" secondAttribute="trailing" id="EMi-MQ-MXW"/>
-                            <constraint firstItem="Vti-ff-scf" firstAttribute="leading" secondItem="1gI-ag-641" secondAttribute="leading" id="Fga-Ox-PnF"/>
-                            <constraint firstItem="Vti-ff-scf" firstAttribute="bottom" secondItem="1gI-ag-641" secondAttribute="bottom" id="T88-iE-AEP"/>
-                            <constraint firstItem="Vti-ff-scf" firstAttribute="top" secondItem="1gI-ag-641" secondAttribute="top" id="zMA-jC-8tv"/>
+                            <constraint firstItem="YBZ-CZ-GuY" firstAttribute="width" secondItem="T7o-i5-s73" secondAttribute="width" multiplier="0.8" id="5y5-nQ-0HH"/>
+                            <constraint firstItem="YBZ-CZ-GuY" firstAttribute="top" secondItem="Z5U-Rq-pMx" secondAttribute="bottom" constant="40" id="B0B-QD-ueO"/>
+                            <constraint firstItem="Z5U-Rq-pMx" firstAttribute="centerX" secondItem="T7o-i5-s73" secondAttribute="centerX" id="KJa-Zv-dg3"/>
+                            <constraint firstItem="Z5U-Rq-pMx" firstAttribute="top" secondItem="1gI-ag-641" secondAttribute="top" constant="40" id="YEr-CM-UrQ"/>
+                            <constraint firstItem="YBZ-CZ-GuY" firstAttribute="centerX" secondItem="T7o-i5-s73" secondAttribute="centerX" id="et0-A5-rJh"/>
+                            <constraint firstItem="SH5-VL-ChE" firstAttribute="width" secondItem="T7o-i5-s73" secondAttribute="width" multiplier="0.8" id="u1t-wc-29A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1gI-ag-641"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Patient" image="user_male" landscapeImage="user_male" largeContentSizeImage="user_male" id="iYy-12-poo"/>
+                    <navigationItem key="navigationItem" title="Patients Data" largeTitleDisplayMode="always" id="oA2-3n-ScE">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="refresh" id="Izn-Co-6d6">
+                            <connections>
+                                <action selector="refresh:" destination="q9H-EZ-Q7V" id="1IP-yp-YoN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="diagnosys" destination="IqJ-NE-s7u" id="b1B-lz-gtX"/>
+                        <outlet property="patientName" destination="4aU-oq-3dk" id="DUd-Dz-uYr"/>
+                        <outlet property="patientSurname" destination="P7p-Bd-mYp" id="aYC-r8-cng"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXI-2o-kRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253.62318840579712" y="347.28260869565219"/>
+            <point key="canvasLocation" x="1025" y="347"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="w3L-2K-PAB">
@@ -170,7 +170,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="q9H-EZ-Q7V" kind="relationship" relationship="viewControllers" id="rv0-OO-DmC"/>
+                        <segue destination="f7R-va-Si3" kind="relationship" relationship="viewControllers" id="rv0-OO-DmC"/>
                         <segue destination="jqC-zN-Yd9" kind="relationship" relationship="viewControllers" id="7ng-lU-vGW"/>
                         <segue destination="jss-1N-gXO" kind="relationship" relationship="viewControllers" id="3Mh-Bx-ELe"/>
                     </connections>
@@ -229,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aL7-q7-9zk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973.91304347826099" y="-340.76086956521743"/>
+            <point key="canvasLocation" x="1025" y="-341"/>
         </scene>
         <!--Patients-->
         <scene sceneID="WkA-fX-ex0">
@@ -340,9 +340,29 @@
             </objects>
             <point key="canvasLocation" x="253.62318840579712" y="1034.5108695652175"/>
         </scene>
+        <!--Patient-->
+        <scene sceneID="3Zb-5q-8aj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f7R-va-Si3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Patient" image="user_male" landscapeImage="user_male" largeContentSizeImage="user_male" id="iYy-12-poo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Hg-Oo-6mh">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="q9H-EZ-Q7V" kind="relationship" relationship="rootViewController" id="Orc-4X-jOJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="idn-jU-86E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253.62318840579712" y="347.28260869565219"/>
+        </scene>
     </scenes>
     <resources>
         <image name="camera" width="30" height="30"/>
+        <image name="refresh" width="30" height="30"/>
         <image name="stack_of_photos" width="30" height="30"/>
         <image name="user_male" width="30" height="30"/>
     </resources>
