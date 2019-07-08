@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="253.62318840579712" y="-340.76086956521743"/>
         </scene>
-        <!--Patients Data-->
+        <!--Patient Data-->
         <scene sceneID="ZYk-av-Q89">
             <objects>
                 <viewController id="q9H-EZ-Q7V" customClass="PatientViewController" customModule="MyPatient" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,7 +143,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1gI-ag-641"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Patients Data" largeTitleDisplayMode="always" id="oA2-3n-ScE">
+                    <navigationItem key="navigationItem" title="Patient Data" largeTitleDisplayMode="always" id="oA2-3n-ScE">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="refresh" id="Izn-Co-6d6">
                             <connections>
                                 <action selector="refresh:" destination="q9H-EZ-Q7V" id="1IP-yp-YoN"/>
@@ -257,7 +257,18 @@
                             <outlet property="delegate" destination="tpW-Ff-uNn" id="lR7-tK-yPL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Patients" id="NbQ-A7-vGw"/>
+                    <navigationItem key="navigationItem" title="Patients" id="NbQ-A7-vGw">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Item" image="rocket" id="Mt1-z5-gdu"/>
+                        <barButtonItem key="rightBarButtonItem" title="Choose" id="smP-VF-cMc">
+                            <connections>
+                                <action selector="edit:" destination="tpW-Ff-uNn" id="6ri-8B-gP1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cloud" destination="Mt1-z5-gdu" id="4m7-Bq-Etj"/>
+                        <outlet property="editCancel" destination="smP-VF-cMc" id="WOg-dq-82H"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4wz-Sf-ssD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -363,6 +374,7 @@
     <resources>
         <image name="camera" width="30" height="30"/>
         <image name="refresh" width="30" height="30"/>
+        <image name="rocket" width="30" height="30"/>
         <image name="stack_of_photos" width="30" height="30"/>
         <image name="user_male" width="30" height="30"/>
     </resources>

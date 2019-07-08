@@ -10,6 +10,9 @@ import UIKit
 
 class DailyPatientsViewController: UITableViewController {
 
+    @IBOutlet weak var cloud: UIBarButtonItem!
+    @IBOutlet weak var editCancel: UIBarButtonItem!
+    
     var items:[String] = [String]()
     
     override func viewDidLoad() {
@@ -19,10 +22,10 @@ class DailyPatientsViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileManager = FileManager.default
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
-            items = try FileManager.default.contentsOfDirectory(atPath: documentsDirectory.path)
+            items = try fileManager.contentsOfDirectory(atPath: documentsDirectory.path)
             tableView.reloadData()
         } catch let error as NSError {
             NSLog("Unable to get a content of a directory \(error.debugDescription)")
@@ -45,7 +48,9 @@ class DailyPatientsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "patientPhotosSeague", sender: indexPath)
+        if !tableView.isEditing {
+            performSegue(withIdentifier: "patientPhotosSeague", sender: indexPath)
+        }
     }
 
     /*
@@ -56,18 +61,23 @@ class DailyPatientsViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            let fileManager = FileManager.default
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let fullURL = documentsDirectory.appendingPathComponent(items[indexPath.row])
+            do {
+                try fileManager.removeItem(atPath: fullURL.path)
+            } catch {
+                print("Could not remove folder: \(error)")
+            }
+            
+            items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
-
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -89,6 +99,22 @@ class DailyPatientsViewController: UITableViewController {
             let patientPhotosVC = segue.destination as! PatientPhotosViewController
             patientPhotosVC.directoryName = items[indexPath.row]
             tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    @IBAction func edit(_ sender: Any) {
+        if !tableView.isEditing {
+            editCancel.title = "Cancel"
+            cloud.isEnabled = true
+            
+            tableView.allowsMultipleSelectionDuringEditing = true
+            tableView.setEditing(true, animated: false)
+        } else {
+            editCancel.title = "Choose"
+            cloud.isEnabled = false
+
+            tableView.allowsMultipleSelectionDuringEditing = false
+            tableView.setEditing(false, animated: false)
         }
     }
 }
