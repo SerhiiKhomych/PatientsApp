@@ -13,7 +13,7 @@
         <!--Camera-->
         <scene sceneID="ucz-Ig-2Pk">
             <objects>
-                <viewController id="jqC-zN-Yd9" customClass="CameraViewController" customModule="MyPatient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jqC-zN-Yd9" customClass="CameraViewController" customModule="MyPatients" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8x4-a4-UDC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,11 +47,11 @@
                         <constraints>
                             <constraint firstItem="ZwP-IM-lv0" firstAttribute="trailing" secondItem="m6r-gb-mOO" secondAttribute="trailing" id="0Gc-oH-aSX"/>
                             <constraint firstItem="ZwP-IM-lv0" firstAttribute="leading" secondItem="8x4-a4-UDC" secondAttribute="leading" id="DLJ-7g-WHh"/>
+                            <constraint firstItem="m6r-gb-mOO" firstAttribute="bottom" secondItem="Lq6-o9-n4I" secondAttribute="bottom" id="JR5-0b-muw"/>
                             <constraint firstItem="ZwP-IM-lv0" firstAttribute="top" secondItem="Lq6-o9-n4I" secondAttribute="top" id="RiJ-oX-NAv"/>
-                            <constraint firstItem="m6r-gb-mOO" firstAttribute="top" secondItem="ZwP-IM-lv0" secondAttribute="bottom" id="TE4-yy-DnI"/>
+                            <constraint firstItem="m6r-gb-mOO" firstAttribute="top" secondItem="ZwP-IM-lv0" secondAttribute="bottom" id="cf7-dn-k2P"/>
                             <constraint firstItem="ZwP-IM-lv0" firstAttribute="leading" secondItem="m6r-gb-mOO" secondAttribute="leading" id="cin-07-Bhe"/>
                             <constraint firstAttribute="trailing" secondItem="ZwP-IM-lv0" secondAttribute="trailing" id="ep6-nR-dvY"/>
-                            <constraint firstItem="m6r-gb-mOO" firstAttribute="bottom" secondItem="Lq6-o9-n4I" secondAttribute="bottom" id="thp-Ru-PdO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lq6-o9-n4I"/>
                     </view>
@@ -68,7 +68,7 @@
         <!--Patient Data-->
         <scene sceneID="ZYk-av-Q89">
             <objects>
-                <viewController id="q9H-EZ-Q7V" customClass="PatientViewController" customModule="MyPatient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="q9H-EZ-Q7V" customClass="PatientViewController" customModule="MyPatients" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T7o-i5-s73">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +163,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="w3L-2K-PAB">
             <objects>
-                <tabBarController id="VCP-Ft-Zv5" customClass="MainTabBarController" customModule="MyPatient" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="VCP-Ft-Zv5" customClass="MainTabBarController" customModule="MyPatients" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cCd-Cz-Qj5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -182,7 +182,7 @@
         <!--Title-->
         <scene sceneID="1x3-f0-elo">
             <objects>
-                <viewController storyboardIdentifier="PhotoVC" id="Rtd-n1-5Rf" customClass="PhotoViewController" customModule="MyPatient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoVC" id="Rtd-n1-5Rf" customClass="PhotoViewController" customModule="MyPatients" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ntl-ft-daV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,7 +234,7 @@
         <!--Patients-->
         <scene sceneID="WkA-fX-ex0">
             <objects>
-                <tableViewController id="tpW-Ff-uNn" customClass="DailyPatientsViewController" customModule="MyPatient" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="tpW-Ff-uNn" customClass="DailyPatientsViewController" customModule="MyPatients" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bke-2h-wMI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,7 +277,7 @@
         <!--Patient Photos View Controller-->
         <scene sceneID="QjL-Wy-FkO">
             <objects>
-                <collectionViewController storyboardIdentifier="PatientPhotosVC" id="scI-5b-pR2" customClass="PatientPhotosViewController" customModule="MyPatient" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="PatientPhotosVC" id="scI-5b-pR2" customClass="PatientPhotosViewController" customModule="MyPatients" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Xtf-96-dMM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

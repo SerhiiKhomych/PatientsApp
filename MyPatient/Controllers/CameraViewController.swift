@@ -35,7 +35,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         slider.value = 1
         
         // initialise session preset. It enables quality of camera
-        // todo: change preset
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
         
         let availableDevices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back).devices
@@ -52,10 +51,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
             
             // set previewLayer as a sublayer of the view
-            // todo: fix this logic
             let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            view.layer.addSublayer(previewLayer)
-            previewLayer.frame = view.layer.frame
+            previewLayer.frame.size = previewView.frame.size
+            previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            
+            previewView.layer.addSublayer(previewLayer)
             
             // run captureSession
             captureSession.startRunning()

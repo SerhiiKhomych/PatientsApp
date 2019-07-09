@@ -19,7 +19,8 @@ class PhotoViewController: UIViewController {
         super.viewDidLoad()
 
         if let availableImage = takenPhoto {
-            imageView.image = availableImage;
+            imageView.contentMode = .scaleToFill
+            imageView.image = availableImage
         }
     }
     
@@ -41,7 +42,7 @@ class PhotoViewController: UIViewController {
             }
         }
         
-        if let data = takenPhoto?.pngData() {
+        if let data = takenPhoto?.jpegData(compressionQuality: 1.0) {
             do {
                 try data.write(to: fullURL.appendingPathComponent(getTodayString()))
             } catch let error as NSError {
