@@ -29,14 +29,16 @@ class PhotoViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: Any) {
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileManager = FileManager.default
+
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
         let directoryName = (patient?.firstName ?? "No_name") + " " + (patient?.surname ?? "No_surname")
         let fullURL = documentsDirectory.appendingPathComponent(directoryName)
         
         var isDir : ObjCBool = true
-        if !FileManager.default.fileExists(atPath: fullURL.path, isDirectory:&isDir) {
+        if !fileManager.fileExists(atPath: fullURL.path, isDirectory:&isDir) {
             do {
-                try FileManager.default.createDirectory(at: fullURL, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(at: fullURL, withIntermediateDirectories: true, attributes: nil)
             } catch let error as NSError {
                 NSLog("Unable to create directory \(error.debugDescription)")
             }
