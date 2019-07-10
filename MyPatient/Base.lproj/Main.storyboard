@@ -274,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="1025" y="1035"/>
         </scene>
-        <!--Patient Photos View Controller-->
+        <!--Title-->
         <scene sceneID="QjL-Wy-FkO">
             <objects>
                 <collectionViewController storyboardIdentifier="PatientPhotosVC" id="scI-5b-pR2" customClass="PatientPhotosViewController" customModule="MyPatients" customModuleProvider="target" sceneMemberID="viewController">
@@ -306,6 +306,16 @@
                             <outlet property="delegate" destination="scI-5b-pR2" id="g7y-CZ-W1K"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Title" id="Tg9-H9-uDY">
+                        <barButtonItem key="rightBarButtonItem" title="Choose" id="n2X-Um-yf4">
+                            <connections>
+                                <action selector="choose:" destination="scI-5b-pR2" id="A0S-yA-Zrs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chooseCancelButton" destination="n2X-Um-yf4" id="r0N-PI-GCY"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNR-g4-zWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

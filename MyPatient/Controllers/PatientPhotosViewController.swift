@@ -12,6 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class PatientPhotosViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var chooseCancelButton: UIBarButtonItem!
+    
     var images:[UIImage] = [UIImage]()
     var directoryName: String!
     
@@ -43,13 +45,11 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return images.count
     }
 
@@ -59,12 +59,24 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
         let imageView: UIImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: cell.frame.width, height: cell.frame.height));
         imageView.image = images[indexPath.row]
         cell.contentView.addSubview(imageView)
-
+        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "fullscreenPhotoSegue", sender: indexPath)
+        if collectionView.allowsMultipleSelection == false {
+            performSegue(withIdentifier: "fullscreenPhotoSegue", sender: indexPath)
+        } else {
+            let cell = collectionView.cellForItem(at: indexPath)
+            cell?.layer.borderColor = UIColor.blue.cgColor
+            cell?.layer.borderWidth = 2
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderColor = UIColor.clear.cgColor
+        cell?.layer.borderWidth = 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -80,35 +92,19 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
         } 
     }
     
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    @IBAction func choose(_ sender: Any) {
+        if collectionView.allowsMultipleSelection == false {
+            chooseCancelButton.title = "Cancel"
+            collectionView.allowsMultipleSelection = true
+        } else {
+            chooseCancelButton.title = "Choose"
+            collectionView.allowsMultipleSelection = false
+            
+            let cells = collectionView.visibleCells
+            for cell in cells {
+                cell.layer.borderColor = UIColor.clear.cgColor
+                cell.layer.borderWidth = 1
+            }
+        }
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
