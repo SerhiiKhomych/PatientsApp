@@ -68,15 +68,13 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
             performSegue(withIdentifier: "fullscreenPhotoSegue", sender: indexPath)
         } else {
             let cell = collectionView.cellForItem(at: indexPath)
-            cell?.layer.borderColor = UIColor.blue.cgColor
-            cell?.layer.borderWidth = 2
+            cell?.contentView.alpha = 0.5
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderColor = UIColor.clear.cgColor
-        cell?.layer.borderWidth = 2
+        cell?.contentView.alpha = 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -102,8 +100,7 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
             
             let cells = collectionView.visibleCells
             for cell in cells {
-                cell.layer.borderColor = UIColor.clear.cgColor
-                cell.layer.borderWidth = 1
+                cell.contentView.alpha = 1
             }
         }
     }
