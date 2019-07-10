@@ -8,23 +8,27 @@
 
 import UIKit
 
-class FullscreenPhotoViewController: UIViewController {
-
+class FullscreenPhotoViewController: UIViewController, UIScrollViewDelegate {
+    
+    var image: UIImage?
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 6.0
+        
+        if let availableImage = image {
+            imageView.contentMode = .scaleToFill
+            imageView.image = availableImage
+        }
+    
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
-    */
-
 }

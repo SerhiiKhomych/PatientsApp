@@ -63,9 +63,21 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "fullscreenPhotoSegue", sender: indexPath)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width * 0.8, height: collectionView.frame.height * 0.6)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fullscreenPhotoSegue" {
+            let indexPath = sender as! IndexPath
+            let fullscreenPhotoVC = segue.destination as! FullscreenPhotoViewController
+            fullscreenPhotoVC.image = images[indexPath.row]
+            collectionView.deselectItem(at: indexPath, animated: true)
+        } 
     }
     
     // MARK: UICollectionViewDelegate
