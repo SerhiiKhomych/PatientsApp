@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F332B0022CE178F00902740 /* PatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F332AFF22CE178F00902740 /* PatientViewController.swift */; };
 		9F332B0422CE17C200902740 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F332B0322CE17C200902740 /* CameraViewController.swift */; };
+		9FA8A26A22D4DC84003E579F /* FullscreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8A26922D4DC84003E579F /* FullscreenPhotoViewController.swift */; };
 		9FAF8CFE22CF8C93006A13DF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF8CFD22CF8C93006A13DF /* PhotoViewController.swift */; };
 		9FC4111E22CB754500773321 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC4111D22CB754500773321 /* AppDelegate.swift */; };
 		9FC4112022CB754500773321 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC4111F22CB754500773321 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		9F332AFF22CE178F00902740 /* PatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewController.swift; sourceTree = "<group>"; };
 		9F332B0322CE17C200902740 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		9FA8A26922D4DC84003E579F /* FullscreenPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPhotoViewController.swift; sourceTree = "<group>"; };
 		9FAF8CFD22CF8C93006A13DF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		9FC4111A22CB754500773321 /* MyPatients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPatients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC4111D22CB754500773321 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				9FC7784A22D0B88300ECDA5E /* MainTabBarController.swift */,
 				9FC7785122D1FA5A00ECDA5E /* DailyPatientsViewController.swift */,
 				9FC7785722D32D2D00ECDA5E /* PatientPhotosViewController.swift */,
+				9FA8A26922D4DC84003E579F /* FullscreenPhotoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA8A26A22D4DC84003E579F /* FullscreenPhotoViewController.swift in Sources */,
 				9FC4112022CB754500773321 /* ViewController.swift in Sources */,
 				9FC7785222D1FA5A00ECDA5E /* DailyPatientsViewController.swift in Sources */,
 				9F332B0422CE17C200902740 /* CameraViewController.swift in Sources */,

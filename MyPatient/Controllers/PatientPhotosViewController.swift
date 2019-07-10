@@ -62,7 +62,8 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
 
         return cell
     }
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width * 0.8, height: collectionView.frame.height * 0.6)
     }

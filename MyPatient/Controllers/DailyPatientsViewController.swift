@@ -49,7 +49,7 @@ class DailyPatientsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !tableView.isEditing {
-            performSegue(withIdentifier: "patientPhotosSeague", sender: indexPath)
+            performSegue(withIdentifier: "patientPhotosSegue", sender: indexPath)
         }
     }
 
@@ -94,7 +94,7 @@ class DailyPatientsViewController: UITableViewController {
     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "patientPhotosSeague" {
+        if segue.identifier == "patientPhotosSegue" {
             let indexPath = sender as! IndexPath
             let patientPhotosVC = segue.destination as! PatientPhotosViewController
             patientPhotosVC.directoryName = items[indexPath.row]
