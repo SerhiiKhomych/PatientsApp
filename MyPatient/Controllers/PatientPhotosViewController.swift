@@ -15,18 +15,19 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
     @IBOutlet weak var chooseCancelButton: UIBarButtonItem!
     
     var images:[UIImage] = [UIImage]()
+    var imagesURL:[UIImage:URL] = [:]
+
     var directoryName: String!
+    
+    var defaultBackButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
+        defaultBackButton = self.navigationItem.leftBarButtonItem
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,8 +40,11 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
 
         guard let fileEnumerator = FileManager.default.enumerator(at: fullURL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions()) else { return }
         images.removeAll()
+        imagesURL.removeAll()
         while let file = fileEnumerator.nextObject() {
-            images.append(UIImage(contentsOfFile: (file as! URL).path)!)
+            let image = UIImage(contentsOfFile: (file as! URL).path)!
+            images.append(image)
+            imagesURL.updateValue(file as! URL, forKey: image)
         }
     }
 
@@ -94,14 +98,35 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
         if collectionView.allowsMultipleSelection == false {
             chooseCancelButton.title = "Cancel"
             collectionView.allowsMultipleSelection = true
+            
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(PatientPhotosViewController.trash(sender:)))
         } else {
             chooseCancelButton.title = "Choose"
             collectionView.allowsMultipleSelection = false
+            
+            self.navigationItem.leftBarButtonItem = defaultBackButton
             
             let cells = collectionView.visibleCells
             for cell in cells {
                 cell.contentView.alpha = 1
             }
+            self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.hidesBackButton = false
+        }
+    }
+    
+    @objc func trash(sender: UIBarButtonItem) {
+        if let indexPaths = collectionView.indexPathsForSelectedItems {
+            for indexPath in indexPaths {
+                do {
+                    let fullURL = imagesURL[images[indexPath.row]]!
+                    try FileManager.default.removeItem(atPath: fullURL.path)
+                } catch {
+                    print("Could not remove image: \(error)")
+                }
+                images.remove(at: indexPath.row)
+            }
+            collectionView.deleteItems(at: indexPaths)
         }
     }
 }
