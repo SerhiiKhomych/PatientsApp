@@ -8,5 +8,5 @@ target 'MyPatients' do
   # Pods for MyPatients
   # Pinning to the latest version at the time
   pod 'GoogleSignIn', '~> 4.4.0'
-
+  pod 'GoogleAPIClientForREST/Drive', '~> 1.3.7'
 end
