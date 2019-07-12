@@ -19,7 +19,7 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
 
     var directoryName: String!
     
-    var defaultBackButton: UIBarButtonItem?
+    var defaultBackButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +35,12 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
         
         self.title = directoryName
         
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileManager = FileManager.default
+        
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fullURL = documentsDirectory.appendingPathComponent(directoryName)
 
-        guard let fileEnumerator = FileManager.default.enumerator(at: fullURL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions()) else { return }
+        guard let fileEnumerator = fileManager.enumerator(at: fullURL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions()) else { return }
         images.removeAll()
         imagesURL.removeAll()
         while let file = fileEnumerator.nextObject() {

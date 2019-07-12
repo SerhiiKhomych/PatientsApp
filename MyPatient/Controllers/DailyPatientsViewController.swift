@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleSignIn
+import GoogleAPIClientForREST
 
 class DailyPatientsViewController: UITableViewController {
 
@@ -15,9 +17,16 @@ class DailyPatientsViewController: UITableViewController {
     
     var items:[String] = [String]()
     
+    var googleDriveService: GTLRDriveService!
+    var googleUser: GIDGoogleUser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+        
+        let barController = self.tabBarController as? MainTabBarController
+        googleDriveService = barController?.googleDriveService
+        googleUser = barController?.googleUser
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +100,47 @@ class DailyPatientsViewController: UITableViewController {
 
             tableView.allowsMultipleSelectionDuringEditing = false
             tableView.setEditing(false, animated: false)
+        }
+    }
+    
+    @IBAction func sendToTheCloud(_ sender: Any) {
+        let googleDriveApiService = GoogleDriveApiService()
+        
+        if let indexPaths = tableView.indexPathsForSelectedRows {
+            for indexPath in indexPaths {
+                let directoryName = items[indexPath.row]
+                var folderIdentifier: String?
+                
+                googleDriveApiService.getFolderID(name: directoryName, service: googleDriveService,user: googleUser) {
+                    folderIdentifier = $0
+                    
+                    let fileManager = FileManager.default
+                    
+                    let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    let fullURL = documentsDirectory.appendingPathComponent(directoryName)
+                    
+                    guard let fileEnumerator = fileManager.enumerator(at: fullURL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions()) else { return }
+                    
+                    if let folderId = folderIdentifier {
+                        while let file = fileEnumerator.nextObject() {
+                            let fileURL = file as! URL
+                            googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: folderId, fileURL: fileURL, mimeType: "image/jpeg", service: self.googleDriveService)
+                        }
+                    } else {
+                        googleDriveApiService.createFolder(name: directoryName, service: self.googleDriveService) {
+                            while let file = fileEnumerator.nextObject() {
+                                let fileURL = file as! URL
+                                googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: $0, fileURL: fileURL, mimeType: "image/jpeg", service: self.googleDriveService)
+                            }
+                        }
+                    }
+               }
+                editCancel.title = "Choose"
+                cloud.isEnabled = false
+                
+                tableView.allowsMultipleSelectionDuringEditing = false
+                tableView.setEditing(false, animated: false)
+            }
         }
     }
 }

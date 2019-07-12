@@ -14,7 +14,7 @@ class PatientViewController: UIViewController {
     @IBOutlet weak var patientSurname: UITextField!
     @IBOutlet weak var diagnosys: UITextField!
     
-    var barController: MainTabBarController?
+    var barController: MainTabBarController!
     
     override func viewDidLoad() {
         super.viewDidLoad()

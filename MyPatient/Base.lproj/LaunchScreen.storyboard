@@ -24,12 +24,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DuJ-33-JDf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="D0w-2m-IMd"/>
-                            <constraint firstAttribute="trailing" secondItem="DuJ-33-JDf" secondAttribute="trailing" id="HH1-HJ-OGW"/>
-                            <constraint firstItem="DuJ-33-JDf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LxA-jY-Fbu"/>
-                            <constraint firstItem="DuJ-33-JDf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Rfp-78-ur2"/>
-                            <constraint firstItem="DuJ-33-JDf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="TMG-s1-4P5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DuJ-33-JDf" secondAttribute="bottom" id="l4H-NT-5NM"/>
+                            <constraint firstItem="DuJ-33-JDf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="BUN-D7-F90"/>
+                            <constraint firstItem="DuJ-33-JDf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="UEs-vC-Gzc"/>
+                            <constraint firstAttribute="trailing" secondItem="DuJ-33-JDf" secondAttribute="trailing" id="gKa-Gx-8IG"/>
+                            <constraint firstItem="DuJ-33-JDf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uTN-oO-CbI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

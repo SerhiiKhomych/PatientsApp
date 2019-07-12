@@ -15,7 +15,7 @@ class MainTabBarController: UITabBarController, GIDSignInDelegate, GIDSignInUIDe
     var patient: Patient! = Patient()
     
     let googleDriveService = GTLRDriveService()
-    var googleUser: GIDGoogleUser?
+    var googleUser: GIDGoogleUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()

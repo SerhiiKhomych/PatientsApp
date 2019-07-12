@@ -10,8 +10,8 @@ import UIKit
 
 class PhotoViewController: UIViewController {
     
-    var takenPhoto: UIImage?
-    var patient: Patient?
+    var takenPhoto: UIImage!
+    var patient: Patient!
 
     @IBOutlet weak var imageView: UIImageView!
     

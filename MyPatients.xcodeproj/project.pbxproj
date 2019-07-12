@@ -12,8 +12,8 @@
 		9F332B0422CE17C200902740 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F332B0322CE17C200902740 /* CameraViewController.swift */; };
 		9FA8A26A22D4DC84003E579F /* FullscreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8A26922D4DC84003E579F /* FullscreenPhotoViewController.swift */; };
 		9FAF8CFE22CF8C93006A13DF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF8CFD22CF8C93006A13DF /* PhotoViewController.swift */; };
+		9FB9BB2522D7D39F005A91CE /* GoogleDriveApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9BB2422D7D39F005A91CE /* GoogleDriveApiService.swift */; };
 		9FC4111E22CB754500773321 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC4111D22CB754500773321 /* AppDelegate.swift */; };
-		9FC4112022CB754500773321 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC4111F22CB754500773321 /* ViewController.swift */; };
 		9FC4112322CB754500773321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC4112122CB754500773321 /* Main.storyboard */; };
 		9FC4112522CB754600773321 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FC4112422CB754600773321 /* Assets.xcassets */; };
 		9FC4112822CB754600773321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC4112622CB754600773321 /* LaunchScreen.storyboard */; };
@@ -31,9 +31,9 @@
 		9F332B0322CE17C200902740 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9FA8A26922D4DC84003E579F /* FullscreenPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPhotoViewController.swift; sourceTree = "<group>"; };
 		9FAF8CFD22CF8C93006A13DF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		9FB9BB2422D7D39F005A91CE /* GoogleDriveApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveApiService.swift; sourceTree = "<group>"; };
 		9FC4111A22CB754500773321 /* MyPatients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPatients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC4111D22CB754500773321 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9FC4111F22CB754500773321 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9FC4112222CB754500773321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9FC4112422CB754600773321 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FC4112722CB754600773321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,6 +87,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		9FB9BB2622D85445005A91CE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9FB9BB2422D7D39F005A91CE /* GoogleDriveApiService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		9FC4111122CB754500773321 = {
 			isa = PBXGroup;
 			children = (
@@ -108,10 +116,10 @@
 		9FC4111C22CB754500773321 /* MyPatient */ = {
 			isa = PBXGroup;
 			children = (
+				9FB9BB2622D85445005A91CE /* Services */,
 				9FC7784C22D0BC0E00ECDA5E /* Models */,
 				9F332AFE22CE175200902740 /* Controllers */,
 				9FC4111D22CB754500773321 /* AppDelegate.swift */,
-				9FC4111F22CB754500773321 /* ViewController.swift */,
 				9FC4112122CB754500773321 /* Main.storyboard */,
 				9FC4112422CB754600773321 /* Assets.xcassets */,
 				9FC4112622CB754600773321 /* LaunchScreen.storyboard */,
@@ -262,12 +270,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FA8A26A22D4DC84003E579F /* FullscreenPhotoViewController.swift in Sources */,
-				9FC4112022CB754500773321 /* ViewController.swift in Sources */,
 				9FC7785222D1FA5A00ECDA5E /* DailyPatientsViewController.swift in Sources */,
 				9F332B0422CE17C200902740 /* CameraViewController.swift in Sources */,
 				9FC7785822D32D2D00ECDA5E /* PatientPhotosViewController.swift in Sources */,
 				9FC4111E22CB754500773321 /* AppDelegate.swift in Sources */,
 				9FC7784B22D0B88300ECDA5E /* MainTabBarController.swift in Sources */,
+				9FB9BB2522D7D39F005A91CE /* GoogleDriveApiService.swift in Sources */,
 				9FC7784E22D0BCB100ECDA5E /* Patient.swift in Sources */,
 				9F332B0022CE178F00902740 /* PatientViewController.swift in Sources */,
 				9FAF8CFE22CF8C93006A13DF /* PhotoViewController.swift in Sources */,

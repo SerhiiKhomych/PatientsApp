@@ -10,7 +10,7 @@ import UIKit
 
 class FullscreenPhotoViewController: UIViewController, UIScrollViewDelegate {
     
-    var image: UIImage?
+    var image: UIImage!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!

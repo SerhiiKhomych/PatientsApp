@@ -14,7 +14,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var previewView: UIView!
     
-    var barController: MainTabBarController?
+    var barController: MainTabBarController!
     
     let captureSession: AVCaptureSession = AVCaptureSession()
     var captureDevice: AVCaptureDevice!

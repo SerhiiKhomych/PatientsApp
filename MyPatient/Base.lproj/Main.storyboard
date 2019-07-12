@@ -258,7 +258,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Patients" id="NbQ-A7-vGw">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Item" image="rocket" id="Mt1-z5-gdu"/>
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Item" image="rocket" id="Mt1-z5-gdu">
+                            <connections>
+                                <action selector="sendToTheCloud:" destination="tpW-Ff-uNn" id="F8d-K9-aSx"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Choose" id="smP-VF-cMc">
                             <connections>
                                 <action selector="edit:" destination="tpW-Ff-uNn" id="6ri-8B-gP1"/>
