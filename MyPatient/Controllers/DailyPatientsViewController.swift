@@ -124,47 +124,39 @@ class DailyPatientsViewController: UITableViewController {
 
         let googleDriveApiService = GoogleDriveApiService()
         let group = DispatchGroup()
+        group.enter()
+
         if let indexPaths = tableView.indexPathsForSelectedRows {
-            for indexPath in indexPaths {
-                group.enter()
-                let directoryName = items[indexPath.row]
-                let fileManager = FileManager.default
-                
-                let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let fullURL = documentsDirectory.appendingPathComponent(directoryName)
-                
-                guard let fileEnumerator = fileManager.enumerator(at: fullURL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions()) else { return }
-                
-                var fileURLs:[URL] = [URL]()
-                while let file = fileEnumerator.nextObject() {
+            googleDriveApiService.createFolder(name: Util.getTodayString(includeTime: false), parentFolderID: "", service: googleDriveService) {
+                for indexPath in indexPaths {
                     group.enter()
-                    let fileURL = file as! URL
-                    fileURLs.append(fileURL)
-                }
-                
-                var folderIdentifier: String?
-                googleDriveApiService.getFolderID(name: directoryName, service: googleDriveService,user: googleUser) {
-                    folderIdentifier = $0
-                    group.leave()
-                    if let folderId = folderIdentifier {
-                        for fileURL in fileURLs {
-                            googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: folderId, fileURL: fileURL, mimeType: "image/jpeg", service: self.googleDriveService) {_ in
-                                group.leave()
-                            }
-                        }
-                    } else {
+                    let directoryName = self.items[indexPath.row]
+                    let fileManager = FileManager.default
+    
+                    let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    let fullURL = documentsDirectory.appendingPathComponent(directoryName)
+    
+                    guard let fileEnumerator = fileManager.enumerator(at: fullURL, includingPropertiesForKeys: nil, options:    FileManager.DirectoryEnumerationOptions()) else { return }
+    
+                    var fileURLs:[URL] = [URL]()
+                    while let file = fileEnumerator.nextObject() {
                         group.enter()
-                        googleDriveApiService.createFolder(name: directoryName, service: self.googleDriveService) {
-                            group.leave()
-                            for fileURL in fileURLs {
-                                googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: $0, fileURL: fileURL, mimeType: "image/jpeg", service: self.googleDriveService) {_ in
-                                    group.leave()
-                                }
+                        let fileURL = file as! URL
+                        fileURLs.append(fileURL)
+                    }
+    
+                    googleDriveApiService.createFolder(name: directoryName, parentFolderID: $0, service: self.googleDriveService) {
+                        group.leave()
+                        for fileURL in fileURLs {
+                            googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: $0, fileURL: fileURL, mimeType:     "image/jpeg", service: self.googleDriveService) {_ in
+                                group.leave()
                             }
                         }
                     }
                 }
+                group.leave()
             }
+            
             group.notify(queue:.main) {
                 self.removeLoadingScreen()
                 

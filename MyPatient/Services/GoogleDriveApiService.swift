@@ -39,11 +39,14 @@ class GoogleDriveApiService {
         }
     }
     
-    func createFolder(name: String, service: GTLRDriveService, completion: @escaping (String) -> Void) {
+    func createFolder(name: String, parentFolderID: String, service: GTLRDriveService, completion: @escaping (String) -> Void) {
         
         let folder = GTLRDrive_File()
         folder.mimeType = "application/vnd.google-apps.folder"
         folder.name = name
+        if  parentFolderID != "" {
+            folder.parents = [parentFolderID]
+        }
         
         // Google Drive folders are files with a special MIME-type.
         let query = GTLRDriveQuery_FilesCreate.query(withObject: folder, uploadParameters: nil)
@@ -68,11 +71,6 @@ class GoogleDriveApiService {
         let uploadParameters = GTLRUploadParameters(fileURL: fileURL, mimeType: mimeType)
         
         let query = GTLRDriveQuery_FilesCreate.query(withObject: file, uploadParameters: uploadParameters)
-        
-        service.uploadProgressBlock = { _, totalBytesUploaded, totalBytesExpectedToUpload in
-            // This block is called multiple times during upload and can
-            // be used to update a progress indicator visible to the user.
-        }
         
         service.executeQuery(query) { (_, result, error) in
             guard error == nil else {

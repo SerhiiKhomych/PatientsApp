@@ -6,8 +6,6 @@
 //  Copyright © 2019 Test. All rights reserved.
 //
 
-import UIKit
-
 class Patient {
     var firstName: String!
     var surname: String!
