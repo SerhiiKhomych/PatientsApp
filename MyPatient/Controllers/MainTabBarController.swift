@@ -11,7 +11,7 @@ import GoogleSignIn
 import GoogleAPIClientForREST
 import GTMSessionFetcher
 
-class MainTabBarController: UITabBarController, GIDSignInDelegate, GIDSignInUIDelegate {
+class MainTabBarController: UITabBarController, GIDSignInDelegate, GIDSignInUIDelegate, UITabBarControllerDelegate {
     var patient: Patient! = Patient()
     
     let googleDriveService = GTLRDriveService()
@@ -19,6 +19,8 @@ class MainTabBarController: UITabBarController, GIDSignInDelegate, GIDSignInUIDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate = self
         
         /***** Configure Google Sign In *****/
         
@@ -46,5 +48,17 @@ class MainTabBarController: UITabBarController, GIDSignInDelegate, GIDSignInUIDe
             self.googleDriveService.authorizer = nil
             self.googleUser = nil
         }
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return !isPatientEmpty()
+    }
+    
+    func isPatientEmpty() -> Bool {
+        if patient.firstName == nil || patient.firstName == ""
+            || patient.surname == nil || patient.surname == "" {
+            return true
+        }
+        return false
     }
 }

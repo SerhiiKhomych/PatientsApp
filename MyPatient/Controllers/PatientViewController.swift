@@ -12,13 +12,22 @@ class PatientViewController: UIViewController {
     
     @IBOutlet weak var patientName: UITextField!
     @IBOutlet weak var patientSurname: UITextField!
-    @IBOutlet weak var diagnosys: UITextField!
     
     var barController: MainTabBarController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         barController = self.tabBarController as? MainTabBarController
+        
+        barController.tabBar.tintColor = UIColor.red
+        
+        patientName.text = ""
+        patientName.layer.borderWidth = 1
+        patientName.layer.borderColor = UIColor.red.cgColor
+        
+        patientSurname.text = ""
+        patientSurname.layer.borderWidth = 1
+        patientSurname.layer.borderColor = UIColor.red.cgColor
     }
     
     @IBAction func patientNameEndInput(_ sender: UITextField) {
@@ -26,8 +35,12 @@ class PatientViewController: UIViewController {
     }
     
     @IBAction func patientNameListener(_ sender: UITextField) {
-        if let controller = barController {
-            controller.patient.firstName = sender.text
+        barController.patient.firstName = sender.text
+        if patientName.text != "" {
+            patientName.layer.borderWidth = 0
+        }
+        if !barController.isPatientEmpty() {
+            barController.tabBar.tintColor = UIColor.gray
         }
     }
     
@@ -36,24 +49,26 @@ class PatientViewController: UIViewController {
     }
     
     @IBAction func patientSurnameListener(_ sender: UITextField) {
-        if let controller = barController {
-            controller.patient.surname = sender.text
+        barController.patient.surname = sender.text
+        if patientSurname.text != "" {
+            patientSurname.layer.borderWidth = 0
         }
-    }
-    
-    @IBAction func diagnosysEndInput(_ sender: UITextField) {
-        sender.resignFirstResponder()
-    }
-    
-    @IBAction func diagnosysListener(_ sender: UITextField) {
-        if let controller = barController {
-            controller.patient.diagnosys = sender.text
+        if !barController.isPatientEmpty() {
+            barController.tabBar.tintColor = UIColor.gray
         }
     }
     
     @IBAction func refresh(_ sender: Any) {
+        barController = self.tabBarController as? MainTabBarController
+        
+        barController.tabBar.tintColor = UIColor.red
+        
         patientName.text = ""
+        patientName.layer.borderWidth = 1
+        patientName.layer.borderColor = UIColor.red.cgColor
+        
         patientSurname.text = ""
-        diagnosys.text = ""
+        patientSurname.layer.borderWidth = 1
+        patientSurname.layer.borderColor = UIColor.red.cgColor
     }
 }

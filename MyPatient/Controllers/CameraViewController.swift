@@ -81,9 +81,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let controller = barController {
-            patient = controller.patient
-        }
+        patient = barController.patient
     }
     
     override func viewWillDisappear(_ animated: Bool) {

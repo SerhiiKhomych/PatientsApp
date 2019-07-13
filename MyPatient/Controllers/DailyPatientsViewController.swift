@@ -70,6 +70,13 @@ class DailyPatientsViewController: UITableViewController {
         if !tableView.isEditing {
             performSegue(withIdentifier: "patientPhotosSegue", sender: indexPath)
         }
+        cloud.isEnabled = true
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.indexPathsForSelectedRows == nil {
+            cloud.isEnabled = false
+        }
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -100,7 +107,6 @@ class DailyPatientsViewController: UITableViewController {
     @IBAction func edit(_ sender: Any) {
         if !tableView.isEditing {
             editCancel.title = "Cancel"
-            cloud.isEnabled = true
             
             tableView.allowsMultipleSelectionDuringEditing = true
             tableView.setEditing(true, animated: false)

@@ -32,7 +32,7 @@ class PhotoViewController: UIViewController {
         let fileManager = FileManager.default
 
         let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let directoryName = (patient?.firstName ?? "No_name") + " " + (patient?.surname ?? "No_surname")
+        let directoryName = patient.firstName + " " + patient.surname
         let fullURL = documentsDirectory.appendingPathComponent(directoryName)
         
         var isDir : ObjCBool = true
@@ -44,17 +44,19 @@ class PhotoViewController: UIViewController {
             }
         }
         
-        if let data = takenPhoto?.jpegData(compressionQuality: 1.0) {
-            do {
-                try data.write(to: fullURL.appendingPathComponent(getTodayString()))
-            } catch let error as NSError {
-                NSLog("Unable to save file \(error.debugDescription)")
+        if let availableImage = takenPhoto {
+            if let data = availableImage.jpegData(compressionQuality: 1.0) {
+                do {
+                    try data.write(to: fullURL.appendingPathComponent(getTodayString()))
+                } catch let error as NSError {
+                    NSLog("Unable to save file \(error.debugDescription)")
+                }
             }
         }
         self.dismiss(animated: true, completion: nil)
     }
     
-    func getTodayString() -> String{
+    func getTodayString() -> String {
         let date = Date()
         let calender = Calendar.current
         let components = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)

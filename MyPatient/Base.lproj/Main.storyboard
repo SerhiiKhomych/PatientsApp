@@ -73,27 +73,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="YBZ-CZ-GuY">
-                                <rect key="frame" x="41.333333333333343" y="280.66666666666669" width="331.33333333333326" height="61.333333333333314"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIAGNOSYS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkl-CK-VrX">
-                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IqJ-NE-s7u">
-                                        <rect key="frame" x="0.0" y="31.333333333333314" width="331.33333333333331" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="diagnosysEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="4T4-lu-TPV"/>
-                                            <action selector="diagnosysListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="dZ0-xT-Qad"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Z5U-Rq-pMx">
                                 <rect key="frame" x="41.333333333333343" y="103.99999999999999" width="331.33333333333326" height="136.66666666666663"/>
                                 <subviews>
@@ -134,11 +113,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YBZ-CZ-GuY" firstAttribute="width" secondItem="T7o-i5-s73" secondAttribute="width" multiplier="0.8" id="5y5-nQ-0HH"/>
-                            <constraint firstItem="YBZ-CZ-GuY" firstAttribute="top" secondItem="Z5U-Rq-pMx" secondAttribute="bottom" constant="40" id="B0B-QD-ueO"/>
                             <constraint firstItem="Z5U-Rq-pMx" firstAttribute="centerX" secondItem="T7o-i5-s73" secondAttribute="centerX" id="KJa-Zv-dg3"/>
                             <constraint firstItem="Z5U-Rq-pMx" firstAttribute="top" secondItem="1gI-ag-641" secondAttribute="top" constant="40" id="YEr-CM-UrQ"/>
-                            <constraint firstItem="YBZ-CZ-GuY" firstAttribute="centerX" secondItem="T7o-i5-s73" secondAttribute="centerX" id="et0-A5-rJh"/>
                             <constraint firstItem="SH5-VL-ChE" firstAttribute="width" secondItem="T7o-i5-s73" secondAttribute="width" multiplier="0.8" id="u1t-wc-29A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1gI-ag-641"/>
@@ -151,7 +127,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="diagnosys" destination="IqJ-NE-s7u" id="b1B-lz-gtX"/>
                         <outlet property="patientName" destination="4aU-oq-3dk" id="DUd-Dz-uYr"/>
                         <outlet property="patientSurname" destination="P7p-Bd-mYp" id="aYC-r8-cng"/>
                     </connections>

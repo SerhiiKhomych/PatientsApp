@@ -9,9 +9,9 @@
 import UIKit
 
 class Patient {
-    var firstName: String?
-    var surname: String?
-    var diagnosys: String?
+    var firstName: String!
+    var surname: String!
+    var diagnosys: String!
     
     init() {
     }
