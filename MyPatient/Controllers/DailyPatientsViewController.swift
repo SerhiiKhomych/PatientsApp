@@ -69,8 +69,9 @@ class DailyPatientsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !tableView.isEditing {
             performSegue(withIdentifier: "patientPhotosSegue", sender: indexPath)
+        } else {
+            cloud.isEnabled = true
         }
-        cloud.isEnabled = true
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
