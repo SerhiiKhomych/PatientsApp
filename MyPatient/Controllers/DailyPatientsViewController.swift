@@ -105,41 +105,54 @@ class DailyPatientsViewController: UITableViewController {
     
     @IBAction func sendToTheCloud(_ sender: Any) {
         let googleDriveApiService = GoogleDriveApiService()
-        
+        let group = DispatchGroup()
+        group.enter()
         if let indexPaths = tableView.indexPathsForSelectedRows {
             for indexPath in indexPaths {
                 let directoryName = items[indexPath.row]
-                var folderIdentifier: String?
+                let fileManager = FileManager.default
                 
+                let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+                let fullURL = documentsDirectory.appendingPathComponent(directoryName)
+                
+                guard let fileEnumerator = fileManager.enumerator(at: fullURL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions()) else { return }
+                
+                var fileURLs:[URL] = [URL]()
+                while let file = fileEnumerator.nextObject() {
+                    group.enter()
+                    let fileURL = file as! URL
+                    fileURLs.append(fileURL)
+                }
+                
+                var folderIdentifier: String?
                 googleDriveApiService.getFolderID(name: directoryName, service: googleDriveService,user: googleUser) {
                     folderIdentifier = $0
-                    
-                    let fileManager = FileManager.default
-                    
-                    let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-                    let fullURL = documentsDirectory.appendingPathComponent(directoryName)
-                    
-                    guard let fileEnumerator = fileManager.enumerator(at: fullURL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions()) else { return }
-                    
+                    group.leave()
                     if let folderId = folderIdentifier {
-                        while let file = fileEnumerator.nextObject() {
-                            let fileURL = file as! URL
-                            googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: folderId, fileURL: fileURL, mimeType: "image/jpeg", service: self.googleDriveService)
+                        for fileURL in fileURLs {
+                            googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: folderId, fileURL: fileURL, mimeType: "image/jpeg", service: self.googleDriveService) {_ in
+                                group.leave()
+                            }
                         }
                     } else {
+                        group.enter()
                         googleDriveApiService.createFolder(name: directoryName, service: self.googleDriveService) {
-                            while let file = fileEnumerator.nextObject() {
-                                let fileURL = file as! URL
-                                googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: $0, fileURL: fileURL, mimeType: "image/jpeg", service: self.googleDriveService)
+                            group.leave()
+                            for fileURL in fileURLs {
+                                googleDriveApiService.uploadFile(name: fileURL.lastPathComponent, folderID: $0, fileURL: fileURL, mimeType: "image/jpeg", service: self.googleDriveService) {_ in
+                                    group.leave()
+                                }
                             }
                         }
                     }
-               }
-                editCancel.title = "Choose"
-                cloud.isEnabled = false
+                }
+            }
+            group.notify(queue:.main) {
+                self.editCancel.title = "Choose"
+                self.cloud.isEnabled = false
                 
-                tableView.allowsMultipleSelectionDuringEditing = false
-                tableView.setEditing(false, animated: false)
+                self.tableView.allowsMultipleSelectionDuringEditing = false
+                self.tableView.setEditing(false, animated: false)
             }
         }
     }

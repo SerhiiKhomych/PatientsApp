@@ -58,7 +58,7 @@ class GoogleDriveApiService {
         }
     }
     
-    func uploadFile(name: String, folderID: String, fileURL: URL, mimeType: String, service: GTLRDriveService) {
+    func uploadFile(name: String, folderID: String, fileURL: URL, mimeType: String, service: GTLRDriveService, completion: @escaping (URL) -> Void) {
         
         let file = GTLRDrive_File()
         file.name = name
@@ -79,7 +79,7 @@ class GoogleDriveApiService {
                 fatalError(error!.localizedDescription)
             }
             
-            // Successful upload if no error is returned.
+            completion(fileURL)
         }
     }
 }
