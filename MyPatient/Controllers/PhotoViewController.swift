@@ -32,8 +32,7 @@ class PhotoViewController: UIViewController {
         let fileManager = FileManager.default
 
         let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let directoryName = patient.firstName + " " + patient.surname
-        let fullURL = documentsDirectory.appendingPathComponent(directoryName)
+        let fullURL = documentsDirectory.appendingPathComponent(patient.fullName)
         
         var isDir : ObjCBool = true
         if !fileManager.fileExists(atPath: fullURL.path, isDirectory:&isDir) {

@@ -74,15 +74,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Z5U-Rq-pMx">
-                                <rect key="frame" x="41.333333333333343" y="103.99999999999999" width="331.33333333333326" height="136.66666666666663"/>
+                                <rect key="frame" x="41.333333333333343" y="103.99999999999999" width="331.33333333333326" height="62.333333333333329"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PATIENT NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH5-VL-ChE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PATIENT FULL NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH5-VL-ChE" userLabel="PATIENT FULL NAME">
                                         <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4aU-oq-3dk">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4aU-oq-3dk" userLabel="Patient Full Name">
                                         <rect key="frame" x="0.0" y="32.333333333333343" width="331.33333333333331" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -90,22 +90,6 @@
                                         <connections>
                                             <action selector="patientNameEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="jOC-fn-C5B"/>
                                             <action selector="patientNameListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="mLc-PB-mZS"/>
-                                        </connections>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PATIENT SURNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-rf-H6o">
-                                        <rect key="frame" x="0.0" y="74.333333333333343" width="331.33333333333331" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P7p-Bd-mYp">
-                                        <rect key="frame" x="0.0" y="106.66666666666666" width="331.33333333333331" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="patientSurnameEndInput:" destination="q9H-EZ-Q7V" eventType="primaryActionTriggered" id="cKX-bU-IfR"/>
-                                            <action selector="patientSurnameListener:" destination="q9H-EZ-Q7V" eventType="editingDidEnd" id="4gj-ij-YuO"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -128,7 +112,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="patientName" destination="4aU-oq-3dk" id="DUd-Dz-uYr"/>
-                        <outlet property="patientSurname" destination="P7p-Bd-mYp" id="aYC-r8-cng"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXI-2o-kRh" userLabel="First Responder" sceneMemberID="firstResponder"/>

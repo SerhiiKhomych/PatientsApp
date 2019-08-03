@@ -11,7 +11,6 @@ import UIKit
 class PatientViewController: UIViewController {
     
     @IBOutlet weak var patientName: UITextField!
-    @IBOutlet weak var patientSurname: UITextField!
     
     var barController: MainTabBarController!
     
@@ -24,10 +23,6 @@ class PatientViewController: UIViewController {
         patientName.text = ""
         patientName.layer.borderWidth = 1
         patientName.layer.borderColor = UIColor.red.cgColor
-        
-        patientSurname.text = ""
-        patientSurname.layer.borderWidth = 1
-        patientSurname.layer.borderColor = UIColor.red.cgColor
     }
     
     @IBAction func patientNameEndInput(_ sender: UITextField) {
@@ -35,27 +30,11 @@ class PatientViewController: UIViewController {
     }
     
     @IBAction func patientNameListener(_ sender: UITextField) {
-        barController.patient.firstName = sender.text
+        barController.patient.fullName = sender.text
         if patientName.text != "" {
             patientName.layer.borderWidth = 0
         } else {
-            barController.patient.firstName = nil
-        }
-        if !barController.isPatientEmpty() {
-            barController.tabBar.tintColor = UIColor.gray
-        }
-    }
-    
-    @IBAction func patientSurnameEndInput(_ sender: UITextField) {
-        sender.resignFirstResponder()
-    }
-    
-    @IBAction func patientSurnameListener(_ sender: UITextField) {
-        barController.patient.surname = sender.text
-        if patientSurname.text != "" {
-            patientSurname.layer.borderWidth = 0
-        } else {
-            barController.patient.surname = nil
+            barController.patient.fullName = nil
         }
         if !barController.isPatientEmpty() {
             barController.tabBar.tintColor = UIColor.gray
@@ -67,14 +46,9 @@ class PatientViewController: UIViewController {
         
         barController.tabBar.tintColor = UIColor.red
         
-        barController.patient.firstName = nil
+        barController.patient.fullName = nil
         patientName.text = ""
         patientName.layer.borderWidth = 1
         patientName.layer.borderColor = UIColor.red.cgColor
-        
-        barController.patient.surname = nil
-        patientSurname.text = ""
-        patientSurname.layer.borderWidth = 1
-        patientSurname.layer.borderColor = UIColor.red.cgColor
     }
 }

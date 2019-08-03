@@ -55,8 +55,7 @@ class MainTabBarController: UITabBarController, GIDSignInDelegate, GIDSignInUIDe
     }
     
     func isPatientEmpty() -> Bool {
-        if patient.firstName == nil || patient.firstName == ""
-            || patient.surname == nil || patient.surname == "" {
+        if patient.fullName == nil || patient.fullName == "" {
             return true
         }
         return false
