@@ -98,37 +98,48 @@ class PatientPhotosViewController: UICollectionViewController, UICollectionViewD
     
     @IBAction func choose(_ sender: Any) {
         if collectionView.allowsMultipleSelection == false {
-            chooseCancelButton.title = "Cancel"
-            collectionView.allowsMultipleSelection = true
-            
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(PatientPhotosViewController.trash(sender:)))
+            toDeleteMode()
         } else {
-            chooseCancelButton.title = "Choose"
-            collectionView.allowsMultipleSelection = false
-            
-            self.navigationItem.leftBarButtonItem = defaultBackButton
-            
-            let cells = collectionView.visibleCells
-            for cell in cells {
-                cell.contentView.alpha = 1
-            }
-            self.navigationItem.leftBarButtonItem = nil
-            self.navigationItem.hidesBackButton = false
+            toChooseItemsMode()
         }
     }
     
     @objc func trash(sender: UIBarButtonItem) {
         if let indexPaths = collectionView.indexPathsForSelectedItems {
-            for indexPath in indexPaths {
+            for indexPath in indexPaths.reversed() {
                 do {
                     let fullURL = imagesURL[images[indexPath.row]]!
                     try FileManager.default.removeItem(atPath: fullURL.path)
                 } catch {
                     print("Could not remove image: \(error)")
                 }
-                images.remove(at: indexPath.row)
+               imagesURL.removeValue(forKey: images[indexPath.row])
+               images.remove(at: indexPath.row)
             }
+            
             collectionView.deleteItems(at: indexPaths)
         }
+        toChooseItemsMode()
+    }
+    
+    func toChooseItemsMode() {
+        chooseCancelButton.title = "Choose"
+        collectionView.allowsMultipleSelection = false
+        
+        self.navigationItem.leftBarButtonItem = defaultBackButton
+        
+        let cells = collectionView.visibleCells
+        for cell in cells {
+            cell.contentView.alpha = 1
+        }
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = false
+    }
+    
+    func toDeleteMode() {
+        chooseCancelButton.title = "Cancel"
+        collectionView.allowsMultipleSelection = true
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(PatientPhotosViewController.trash(sender:)))
     }
 }
