@@ -50,8 +50,12 @@ class MainTabBarController: UITabBarController, GIDSignInDelegate, GIDSignInUIDe
         }
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return !isPatientEmpty()
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {        
+        if viewController is CameraViewController {
+            return !isPatientEmpty()
+        } else {
+            return true
+        }
     }
     
     func isPatientEmpty() -> Bool {

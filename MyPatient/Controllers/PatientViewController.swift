@@ -13,12 +13,14 @@ class PatientViewController: UIViewController {
     @IBOutlet weak var patientName: UITextField!
     
     var barController: MainTabBarController!
+    var cameraTabBarItem: UITabBarItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         barController = self.tabBarController as? MainTabBarController
-        
-        barController.tabBar.tintColor = UIColor.red
+    
+        cameraTabBarItem = barController!.tabBar.items![1]
+        cameraTabBarItem.isEnabled = false
         
         patientName.text = ""
         patientName.layer.borderWidth = 1
@@ -37,18 +39,18 @@ class PatientViewController: UIViewController {
             barController.patient.fullName = nil
         }
         if !barController.isPatientEmpty() {
-            barController.tabBar.tintColor = UIColor.gray
+            cameraTabBarItem.isEnabled = true
         }
     }
     
     @IBAction func refresh(_ sender: Any) {
         barController = self.tabBarController as? MainTabBarController
-        
-        barController.tabBar.tintColor = UIColor.red
-        
         barController.patient.fullName = nil
+        
         patientName.text = ""
         patientName.layer.borderWidth = 1
         patientName.layer.borderColor = UIColor.red.cgColor
+        
+        cameraTabBarItem.isEnabled = false
     }
 }
